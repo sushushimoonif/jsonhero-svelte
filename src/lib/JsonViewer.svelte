@@ -25,13 +25,17 @@
   let containerWidth = 0;
   let isSmallScreen = false;
 
-  $: if ($jsonData) {
-    initializeColumns();
+  $: {
+    if ($jsonData) {
+      initializeColumns();
+    }
   }
 
   // Clear selection history when switching sidebar options
-  $: if ($selectedSidebarOption) {
-    clearSelectionHistory();
+  $: {
+    if ($selectedSidebarOption) {
+      clearSelectionHistory();
+    }
   }
 
   // Monitor screen size for responsive behavior
@@ -316,7 +320,7 @@
       {#if searchQuery}
         <button 
           class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white text-lg"
-          on:click={() => searchQuery = ''}
+          onclick={() => searchQuery = ''}
         >
           ×
         </button>
@@ -358,7 +362,7 @@
           <button 
             class="w-full flex items-center px-3 py-2 text-left hover:bg-gray-700 transition-colors duration-150"
             class:bg-gray-700={selectedPartItem === item.name}
-            on:click={() => selectPartItem(item.name)}
+            onclick={() => selectPartItem(item.name)}
           >
             <FileText class="w-2 h-2 text-blue-400 mr-2 flex-shrink-0" />
             <span class="text-gray-300 text-xs truncate">{item.name}</span>
@@ -391,7 +395,7 @@
                 <button
                   class="w-full flex flex-col px-3 py-2 text-left hover:bg-gray-700 transition-colors duration-150 tree-item"
                   class:bg-gray-700={column.selectedIndex === itemIndex}
-                  on:click={() => selectNode(item, columnIndex, itemIndex)}
+                  onclick={() => selectNode(item, columnIndex, itemIndex)}
                   on:contextmenu={(e) => handleRightClick(e, item)}
                 >
                   <div class="flex items-center justify-between w-full">
@@ -561,14 +565,14 @@
     >
       <button 
         class="w-full flex items-center px-4 py-2 text-sm text-gray-300 hover:bg-gray-600 hover:text-white transition-colors"
-        on:click={copyToClipboard}
+        onclick={copyToClipboard}
       >
         <Copy class="w-4 h-4 mr-2" />
         复制
       </button>
       <button 
         class="w-full flex items-center px-4 py-2 text-sm text-gray-300 hover:bg-gray-600 hover:text-white transition-colors"
-        on:click={downloadItem}
+        onclick={downloadItem}
       >
         <Download class="w-4 h-4 mr-2" />
         下载
@@ -576,7 +580,7 @@
       {#if navigator.share}
         <button 
           class="w-full flex items-center px-4 py-2 text-sm text-gray-300 hover:bg-gray-600 hover:text-white transition-colors"
-          on:click={shareItem}
+          onclick={shareItem}
         >
           <Share class="w-4 h-4 mr-2" />
           分享

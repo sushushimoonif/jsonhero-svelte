@@ -42,7 +42,7 @@
     {#each $sidebarOptions as option}
       <button
         class="w-full flex flex-col items-center px-2 py-3 text-center hover:bg-gray-700 transition-colors duration-200 {option.active ? 'bg-blue-600 text-white border-r-2 border-blue-400' : 'text-gray-300'}"
-        on:click={() => selectOption(option.id)}
+        onclick={() => selectOption(option.id)}
       >
         <svelte:component 
           this={getIcon(option.icon)} 
